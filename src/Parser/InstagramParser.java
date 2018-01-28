@@ -21,11 +21,12 @@ public class InstagramParser {
 
         String pat_script_incl_json = "window._sharedData\\s?=\\s?(.*?);?<\\/script>";
 
-        String image_url = null;
-        String thumbnail_image_url = null;
         long timestamp = -1;
         String username = null;
 
+        JSONArray dataJsonArray = null;
+
+        // 루틴 시작
         Document doc;
         doc = _doc;
 
@@ -55,6 +56,9 @@ public class InstagramParser {
                 allJSON = (JSONObject)((JSONObject)((JSONObject)postPageArray.get(0)).get("graphql")).get("shortcode_media");
                 allJSON.remove("edge_media_to_comment");
                 allJSON.remove("edge_media_preview_like");
+
+
+                // 비디오 지원가능
                 boolean isVideo = (boolean)allJSON.get("is_video");
                 if(isVideo){
                     returnJson.put("msg", "정지 화상이 아닙니다");
@@ -63,39 +67,24 @@ public class InstagramParser {
                     return returnJson;
                 }
 
-                JSONArray displayList = (JSONArray)allJSON.get("display_resources");
-                long maxW = 0, minW = Long.MAX_VALUE;
-                long maxH = 0, minH = Long.MAX_VALUE;
-                // image size정보는 아직 사용하지 않으나 추후 desc에 추가 가능
+                JSONObject edgeSidecarToChildren = (JSONObject)allJSON.get("edge_sidecar_to_children");
+                if(edgeSidecarToChildren != null){ // 여러사진 일 때
+                    dataJsonArray = parseJsonMultipleImage(edgeSidecarToChildren, local_path);
 
-                int displayListSize = displayList.size();
-                for(int i=0; i<displayListSize ; i++){
-                    JSONObject eachResource = (JSONObject)displayList.get(i);
-                    long w= (long)eachResource.get("config_width");
-                    long h = (long)eachResource.get("config_height");
+                }else{ // 낱장 일 떄
+                    dataJsonArray = parseJsonSingleImage(allJSON, local_path);
 
-                    if(maxW < w){
-                        maxW = w;
-                        maxH = h;
-                        image_url = (String)eachResource.get("src");
-                    }
-                    if(minW > w){
-                        minW = w;
-                        minH = h;
-                        thumbnail_image_url = (String)eachResource.get("src");
-                    }
                 }
 
-                String thumbnail_file_path = ImageProcess.saveFromUrl(thumbnail_image_url, local_path);
                 JSONObject owner = (JSONObject)allJSON.get("owner");
                 username = (String)owner.get("username");
 
                 timestamp = (long)allJSON.get("taken_at_timestamp");
 
-                returnJson.put("thumb", thumbnail_file_path);
+                returnJson.put("data", dataJsonArray);
                 returnJson.put("title", timestamp);
                 returnJson.put("user", username);
-                returnJson.put("url", image_url);
+
                 //찾았으니 break;
                 break;
             }
@@ -181,6 +170,68 @@ public class InstagramParser {
         }
 
         return builder.toString();
+    }
+
+    private JSONObject getFitImage(JSONArray _json, String local_path){
+        JSONObject eachDataJson = new JSONObject();
+
+        String image_url = null;
+        String thumbnail_image_url = null;
+
+        // image size정보는 아직 사용하지 않으나 추후 desc에 추가 가능
+        long maxW = 0, minW = Long.MAX_VALUE;
+        long maxH = 0, minH = Long.MAX_VALUE;
+
+        int displayListSize = _json.size();
+        for(int i=0; i<displayListSize ; i++){
+            JSONObject eachResource = (JSONObject)_json.get(i);
+            long w= (long)eachResource.get("config_width");
+            long h = (long)eachResource.get("config_height");
+
+            if(maxW < w){
+                maxW = w;
+                maxH = h;
+                image_url = (String)eachResource.get("src");
+            }
+            if(minW > w){
+                minW = w;
+                minH = h;
+                thumbnail_image_url = (String)eachResource.get("src");
+            }
+        }
+        String thumbnail_file_path = ImageProcess.saveFromUrl(thumbnail_image_url, local_path);
+
+        eachDataJson.put("thumb", thumbnail_file_path);
+        eachDataJson.put("url", image_url);
+
+        return eachDataJson;
+
+    }
+
+    private JSONArray parseJsonSingleImage(JSONObject _json, String local_path){
+        JSONArray dataJsonArray = new JSONArray();
+
+        JSONArray displayList = (JSONArray)_json.get("display_resources");
+
+        dataJsonArray.add(getFitImage(displayList, local_path));
+
+        return dataJsonArray;
+    }
+
+    private JSONArray parseJsonMultipleImage(JSONObject _json, String local_path){
+        JSONArray dataJsonArray = new JSONArray();
+
+        JSONArray allEdges = (JSONArray)_json.get("edges");
+        int allEdgesSize = allEdges.size();
+        for(int i=0; i< allEdgesSize; i++){
+
+            JSONObject eachNode = (JSONObject)((JSONObject)allEdges.get(i)).get("node");
+            JSONArray displayList = (JSONArray)eachNode.get("display_resources");
+
+            dataJsonArray.add(getFitImage(displayList, local_path));
+        }
+
+        return dataJsonArray;
     }
 
 }

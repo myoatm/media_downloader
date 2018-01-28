@@ -111,29 +111,44 @@
             $("#resultRender").append(_out);
             return;
         }
-        var link = $('<a href=' + data["url"] + ' download="' + data["user"] + "_" + data["title"] + '">' +
-            '<br>' +
-            '<input type="button" class="btn btn_warning" value="다운로드"> ' +
-            '</a>');
+
 
         var p = $('<p></p>');
-        var user = $('<label>' + data["user"] + '</label> - ');
-        var title = $('<label>' + data["title"] + '</label>');
+        var _user = data["user"];
+        var _title = data["title"];
+
+        var user = $('<label>' + _user + '</label> - ');
+        var title = $('<label>' + _title + '</label>');
         p.append(user);
         p.append(title);
-
-
-        //$("#resultRender").append(user);
-        //$("#resultRender").append(title);
         $("#resultRender").append(p);
 
-        if(data["thumb"] != null){
-            var thumb = $('<img src=' + data["thumb"] + '><br>');
-            $("#resultRender").append(thumb);
-        }
-        $("#resultRender").append(link);
+        var resultData = data["data"];
+        var resultDataLength = Object.keys(resultData).length;
 
-        afterMainAjaxRequest(data["thumb"]);
+        for(i=0; i<resultDataLength; i++){
+            p2 = $('<p></p>');
+
+            dataThumb = resultData[i]["thumb"];
+            dataUrl   = resultData[i]["url"];
+            console.log(dataThumb);
+            console.log(dataUrl);
+            console.log("------------------------")
+            var thumb = $('<img src=' + dataThumb + ' style="width:400px;"><br>');
+
+
+            var link = $('<a href=' + dataUrl + ' download="' + _user + "_" + _title + "_" + i + '">' +
+                '<br>' +
+                '<input type="button" class="btn btn_warning" value="다운로드"> ' +
+                '</a>');
+
+            p2.append(thumb);
+            p2.append(link);
+            $("#resultRender").append(p2);
+            afterMainAjaxRequest(dataThumb);
+        }
+
+
     }
 
     function allHideInputForm(){
@@ -213,53 +228,53 @@
 
 <html>
 <head>
-  <title>웹 미디어 다운로더</title>
+    <title>웹 미디어 다운로더</title>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 
-  <script src="json2.js"></script>
+    <script src="json2.js"></script>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </head>
 <body>
 
 <div class="container">
-  <!-- Content here -->
-  <section>
-    <div class="form-group">
-      <label for="select_mediaProvider">미디어를 선택해주세요</label>
-      <select class="form-control" id="select_mediaProvider" onchange="change_select_mediaProvider(this)" >
-        <option disabled selected value>옵션을 선택해주세요</option>
-        <option value="facebook_public">Facebook 공개</option>
-        <option value="facebook_private">Facebook 비공개</option>
-        <option value="instagram_public">Instagram 공개</option>
-        <option value="instagram_private">Instagram 비공개</option>
-        <option value="youtube">Youtube</option>
-        <!--
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        -->
-      </select>
-    </div>
-    <div class="form-group" id="sourceForm_1" style="display:none;">
-      <label for="textarea_source">페이지 URL을 입력해주세요</label>
-      <input type="text" class="form-control" id="txt_url">
-    </div>
-    <div class="form-group" id="sourceForm_2" style="display:none;">
-      <label for="textarea_source">페이지 소스를 입력해주세요</label>
-      <textarea class="form-control" id="textarea_source" rows="7"></textarea>
-    </div>
-    <input class="btn btn-primary" type="button" value="서버요청" id="doPostBtn" onclick="needToParse()">
-  </section>
-  <section id="resultRender">
+    <!-- Content here -->
+    <section>
+        <div class="form-group">
+            <label for="select_mediaProvider">미디어를 선택해주세요</label>
+            <select class="form-control" id="select_mediaProvider" onchange="change_select_mediaProvider(this)" >
+                <option disabled selected value>옵션을 선택해주세요</option>
+                <option value="facebook_public">Facebook 공개</option>
+                <option value="facebook_private">Facebook 비공개</option>
+                <option value="instagram_public">Instagram 공개</option>
+                <option value="instagram_private">Instagram 비공개</option>
+                <option value="youtube">Youtube</option>
+                <!--
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                -->
+            </select>
+        </div>
+        <div class="form-group" id="sourceForm_1" style="display:none;">
+            <label for="textarea_source">페이지 URL을 입력해주세요</label>
+            <input type="text" class="form-control" id="txt_url">
+        </div>
+        <div class="form-group" id="sourceForm_2" style="display:none;">
+            <label for="textarea_source">페이지 소스를 입력해주세요</label>
+            <textarea class="form-control" id="textarea_source" rows="7"></textarea>
+        </div>
+        <input class="btn btn-primary" type="button" value="서버요청" id="doPostBtn" onclick="needToParse()">
+    </section>
+    <section id="resultRender">
 
-  </section>
-  <section id="tempRener" style="display:none;">
+    </section>
+    <section id="tempRener" style="display:none;">
 
-  </section>
+    </section>
 </div>
 
 </body>
