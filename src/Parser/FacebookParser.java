@@ -1,5 +1,6 @@
 package Parser;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -26,9 +27,13 @@ public class FacebookParser {
         String thumbnail_image_url = null;
 
         JSONObject returnJson = new JSONObject();
+        JSONArray dataJsonArray = new JSONArray();
+
 
         Document doc = _doc;
         try{
+            JSONObject tmpJson = new JSONObject();
+
             if(_doc == null){
                 doc = Jsoup.connect(data).get();
             }
@@ -40,7 +45,7 @@ public class FacebookParser {
                 String findProperty_og_img = elem.attr("property");
                 if(findProperty_og_img.compareTo("og:image") == 0){
                     thumbnail_image_url = elem.attr("content");
-                    returnJson.put("thumb", thumbnail_image_url);
+                    tmpJson.put("thumb", thumbnail_image_url);
                 }
             }
 
@@ -73,8 +78,10 @@ public class FacebookParser {
                 }
 
 
-                returnJson.put("url", video_url);
+                tmpJson.put("url", video_url);
             }
+            dataJsonArray.add(tmpJson);
+            returnJson.put("data", dataJsonArray);
 
         }catch(Exception e){
             e.printStackTrace();

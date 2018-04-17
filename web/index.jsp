@@ -198,6 +198,10 @@
                 $("#sourceForm_2").show();
                 break;
             case 5:
+                $("#sourceForm_1").show();
+                break;
+            case 6:
+                $("#sourceForm_1").show();
                 break;
         }
     }
@@ -252,6 +256,7 @@
                 <option value="instagram_public">Instagram 공개</option>
                 <option value="instagram_private">Instagram 비공개</option>
                 <option value="youtube">Youtube</option>
+                <option value="youtube_playlist">Youtube 플레이리스트</option>
                 <!--
                 <option>3</option>
                 <option>4</option>

@@ -59,6 +59,7 @@ public class InstagramParser {
 
 
                 // 비디오 지원가능
+                /*
                 boolean isVideo = (boolean)allJSON.get("is_video");
                 if(isVideo){
                     returnJson.put("msg", "정지 화상이 아닙니다");
@@ -66,6 +67,7 @@ public class InstagramParser {
 
                     return returnJson;
                 }
+                */
 
                 JSONObject edgeSidecarToChildren = (JSONObject)allJSON.get("edge_sidecar_to_children");
                 if(edgeSidecarToChildren != null){ // 여러사진 일 때
@@ -208,12 +210,21 @@ public class InstagramParser {
 
     }
 
-    private JSONArray parseJsonSingleImage(JSONObject _json, String local_path){
+    private JSONArray parseJsonSingleImage(JSONObject eachNode, String local_path){
         JSONArray dataJsonArray = new JSONArray();
 
-        JSONArray displayList = (JSONArray)_json.get("display_resources");
+        JSONArray displayList = (JSONArray)eachNode.get("display_resources");
 
-        dataJsonArray.add(getFitImage(displayList, local_path));
+
+        JSONObject parsedObject = getFitImage(displayList, local_path);
+
+        boolean isVideo = (boolean)eachNode.get("is_video");
+        if(isVideo) {
+            parsedObject.replace("url", eachNode.get("video_url"));
+        }
+
+        dataJsonArray.add(parsedObject);
+
 
         return dataJsonArray;
     }
@@ -228,7 +239,13 @@ public class InstagramParser {
             JSONObject eachNode = (JSONObject)((JSONObject)allEdges.get(i)).get("node");
             JSONArray displayList = (JSONArray)eachNode.get("display_resources");
 
-            dataJsonArray.add(getFitImage(displayList, local_path));
+            JSONObject parsedObject = getFitImage(displayList, local_path);
+
+            boolean isVideo = (boolean)eachNode.get("is_video");
+            if(isVideo) {
+                parsedObject.replace("url", eachNode.get("video_url"));
+            }
+            dataJsonArray.add(parsedObject);
         }
 
         return dataJsonArray;

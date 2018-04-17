@@ -10,7 +10,7 @@ public class YoutubeParser {
     public YoutubeParser() {
     }
 
-    public JSONObject doParsing(String url){
+    public JSONObject doParsing(String url, String local_path, boolean isPlaylist){
         JSONObject returnJson = new JSONObject();
 
 
@@ -36,4 +36,6 @@ public class YoutubeParser {
         return findString;
 
     }
+
+
 }
