@@ -83,7 +83,6 @@
             data: { "data" : data, "media" : media },
             dataType:"json",
             success: [function(result){
-                console.log(result);
                 createResultElem(result);
             }]
         });
@@ -126,14 +125,14 @@
         var resultData = data["data"];
         var resultDataLength = Object.keys(resultData).length;
 
+        fileId = [];
+
         for(i=0; i<resultDataLength; i++){
             p2 = $('<p></p>');
 
             dataThumb = resultData[i]["thumb"];
             dataUrl   = resultData[i]["url"];
-            console.log(dataThumb);
-            console.log(dataUrl);
-            console.log("------------------------")
+
             var thumb = $('<img src=' + dataThumb + ' style="width:400px;"><br>');
 
 
@@ -145,9 +144,10 @@
             p2.append(thumb);
             p2.append(link);
             $("#resultRender").append(p2);
-            afterMainAjaxRequest(dataThumb);
+            //afterMainAjaxRequest(dataThumb);
+            fileId.push(dataThumb);
         }
-
+        afterMainAjaxRequest(fileId);
 
     }
 
@@ -157,7 +157,7 @@
         //$("#sourceForm_1").show();
     }
 
-    function afterMainAjaxRequest(delFile){ //all components will be disabled.
+    function afterMainAjaxRequest(delFileList){ //all components will be disabled.
         $("#sourceForm_1").prop( "disabled", true );
         $("#sourceForm_2").prop( "disabled", true );
         $("#select_mediaProvider").prop( "disabled", true );
@@ -165,16 +165,17 @@
         $("#textarea_source").prop( "disabled", true );
 
 
-        if(delFile ==null || delFile == "" ){
-
+        if(delFileList ==null || delFileList == [] ){
+            return
         }
+
+
         $.ajax({
             type:"POST",
             url:"proc/delete_thumb.jsp",
-            data: { "thumb" : delFile},
+            data: { "thumb" : JSON.stringify(delFileList)},
             dataType:"json",
             success: [function(result){
-                console.log(result);
             }]
         });
 

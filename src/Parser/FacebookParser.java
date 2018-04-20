@@ -96,12 +96,6 @@ public class FacebookParser {
         Matcher match =  p.matcher(data);
         boolean isFound = match.find();
 
-        /*
-        System.out.println("-----------------------");
-        System.out.println(pattern);
-        System.out.println(isFound);
-        */
-
         if(!isFound){
             return null;
         }

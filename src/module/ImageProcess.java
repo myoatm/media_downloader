@@ -9,7 +9,8 @@ import java.util.Random;
 
 public class ImageProcess {
 
-    private static String FULL_PATH = File.separator + "tmp" + File.separator + "images" + File.separator;
+    private static String FULL_PATH = "tmp" + File.separator + "images" + File.separator;
+    // private static String FULL_PATH = File.separator +  "tmp" + File.separator + "images" + File.separator; // in windows
     private static int DEFAULT_GEN_FILENAME_LENGTH = 10;
 
     private static char[] charaters = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','0','1','2','3','4','5','6','7','8','9'};

@@ -79,6 +79,7 @@ public class IndexInterface {
     }
 
     public JSONObject integratedParse(String media, String data, String local_path){
+
         if(media.compareTo("facebook_private") ==0){
             return parsingFromFacebookPrivate(data, local_path);
         }else if(media.compareTo("facebook_public") ==0){

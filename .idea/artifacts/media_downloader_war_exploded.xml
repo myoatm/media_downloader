@@ -7,6 +7,10 @@
         <element id="directory" name="classes">
           <element id="module-output" name="media_downloader" />
         </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="C:/tomcat7/lib/json-simple-1.1.1.jar" />
+          <element id="file-copy" path="C:/tomcat7/lib/jsoup-1.11.2.jar" />
+        </element>
       </element>
     </root>
   </artifact>
