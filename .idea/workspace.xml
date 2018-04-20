@@ -7,44 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="029510b8-85bd-4dd9-b138-67b32e1d68e4" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/unnamed.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/media_downloader_war.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/media_downloader_war.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/media_downloader_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/media_downloader_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/JAX_WS_Glassfish___JAX_WS_2_2_RI___Metro_1_X___JWSDP_2_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/FastInoset.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/gmbal-api-only.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ha-api.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javax.annotation.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/jaxb-api.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/jaxb-impl.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/jaxb-xjc.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/jaxws-api.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/jaxws-rt.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/jaxws-tools.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/json_simple-1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/jsoup-1.11.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/jsr181-api.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mail.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/management-api.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mimepull.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/policy.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/saaj-api.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/saaj-impl.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/stax-ex.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/stax2-api.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/streambuffer.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/woodstox-core-asl.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media_downloader.iml" beforeDir="false" afterPath="$PROJECT_DIR$/media_downloader.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/IndexInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/IndexInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Parser/FacebookParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser/FacebookParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/example/HelloWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/example/HelloWorld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/module/BackgroundRemover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/module/BackgroundRemover.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/module/ImageProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/module/ImageProcess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/proc/delete_thumb.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/proc/delete_thumb.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/tmp/images/testt.png" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,8 +22,8 @@
       <file leaf-file-name="index.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="178" selection-start-line="178" selection-end-line="178" />
+            <state relative-caret-position="264">
+              <caret line="47" column="59" selection-start-line="47" selection-start-column="59" selection-end-line="47" selection-end-column="59" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -100,7 +63,7 @@
         <entry file="file://$PROJECT_DIR$/src/Parser/YoutubeParser.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="437">
-              <caret line="26" column="24" lean-forward="true" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+              <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -109,7 +72,7 @@
         <entry file="file://$PROJECT_DIR$/src/Parser/FacebookParser.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="384">
-              <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
+              <caret line="97" selection-start-line="97" selection-end-line="97" />
             </state>
           </provider>
         </entry>
@@ -118,7 +81,7 @@
         <entry file="file://$PROJECT_DIR$/src/Parser/InstagramParser.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="343">
-              <caret line="206" column="43" lean-forward="true" selection-start-line="206" selection-start-column="43" selection-end-line="206" selection-end-column="43" />
+              <caret line="206" column="43" selection-start-line="206" selection-start-column="43" selection-end-line="206" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -127,7 +90,7 @@
         <entry file="file://$PROJECT_DIR$/src/module/ImageProcess.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="439">
-              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
             </state>
           </provider>
         </entry>
@@ -155,6 +118,7 @@
       <find>System.out</find>
       <find>con</find>
       <find>console.log</find>
+      <find>sourceForm_2</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -500,12 +464,12 @@
       <workItem from="1517833958900" duration="50000" />
       <workItem from="1517930516925" duration="1069000" />
       <workItem from="1523943047316" duration="1703000" />
-      <workItem from="1524191389331" duration="5125000" />
+      <workItem from="1524191389331" duration="5927000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15251000" />
+    <option name="totallyTimeSpent" value="16053000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1713" y="0" width="1734" height="1407" extended-state="0" />
@@ -551,13 +515,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/web/index.jsp</url>
-          <line>129</line>
+          <line>134</line>
           <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/web/index.jsp</url>
-          <line>124</line>
+          <line>129</line>
           <properties />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
@@ -841,14 +805,14 @@
     <entry file="file://$PROJECT_DIR$/src/Parser/YoutubeParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
-          <caret line="26" column="24" lean-forward="true" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+          <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Parser/InstagramParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="343">
-          <caret line="206" column="43" lean-forward="true" selection-start-line="206" selection-start-column="43" selection-end-line="206" selection-end-column="43" />
+          <caret line="206" column="43" selection-start-line="206" selection-start-column="43" selection-end-line="206" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -864,7 +828,7 @@
     <entry file="file://$PROJECT_DIR$/src/module/ImageProcess.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="439">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
         </state>
       </provider>
     </entry>
@@ -878,7 +842,7 @@
     <entry file="file://$PROJECT_DIR$/src/Parser/FacebookParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="384">
-          <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
+          <caret line="97" selection-start-line="97" selection-end-line="97" />
         </state>
       </provider>
     </entry>
@@ -912,8 +876,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="178" selection-start-line="178" selection-end-line="178" />
+        <state relative-caret-position="264">
+          <caret line="47" column="59" selection-start-line="47" selection-start-column="59" selection-end-line="47" selection-end-column="59" />
           <folding>
             <element signature="n#style#0;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />

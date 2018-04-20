@@ -43,7 +43,12 @@
             case 2: // facebook 비공개
                 $("#tempRener").text( $("#sourceForm_2").find("textarea").val() );
                 //val = $("#tempRener").html();
+
+                /* 소스보기 데이터에는 이스케이핑이 필요한 문자가 다수 포함되어있음. 정상적인 json string을 위해
+                예외를 유발할 수 있는 문자들을 각각 이스케이핑하여 전송할 수 있도록 함 */
+
                 val = json_quote($("#sourceForm_2").find("textarea").val());
+
                 break;
 
             case 3: // instagram 공개
